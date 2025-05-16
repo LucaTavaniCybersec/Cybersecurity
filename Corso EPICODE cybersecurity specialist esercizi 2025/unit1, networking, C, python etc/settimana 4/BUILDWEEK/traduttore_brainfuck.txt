@@ -1,0 +1,54 @@
+def brainfuck_to_text(code):
+    # Creiamo una lista per la memoria con 30000 celle inizializzate a 0
+    memory = [0] * 30000
+    pointer = 0  # Puntatore alla cella corrente
+    output = []  # Lista per memorizzare il risultato
+    code_pointer = 0  # Puntatore al codice Brainfuck
+    
+    # Eseguiamo il codice Brainfuck
+    while code_pointer < len(code):
+        command = code[code_pointer]
+        
+        if command == '>':
+            pointer += 1
+        elif command == '<':
+            pointer -= 1
+        elif command == '+':
+            memory[pointer] += 1
+        elif command == '-':
+            memory[pointer] -= 1
+        elif command == '.':
+            output.append(chr(memory[pointer]))
+        elif command == ',':
+            pass  # Non gestiamo l'input in questo esempio
+        elif command == '[':
+            if memory[pointer] == 0:
+                # Saltare alla fine del ciclo
+                open_brackets = 1
+                while open_brackets != 0:
+                    code_pointer += 1
+                    if code[code_pointer] == '[':
+                        open_brackets += 1
+                    elif code[code_pointer] == ']':
+                        open_brackets -= 1
+        elif command == ']':
+            if memory[pointer] != 0:
+                # Tornare all'inizio del ciclo
+                close_brackets = 1
+                while close_brackets != 0:
+                    code_pointer -= 1
+                    if code[code_pointer] == ']':
+                        close_brackets += 1
+                    elif code[code_pointer] == '[':
+                        close_brackets -= 1
+        
+        # Passiamo al prossimo comando Brainfuck
+        code_pointer += 1
+    
+    # Restituiamo l'output come stringa
+    return ''.join(output)
+
+# Esempio di utilizzo:
+brainfuck_code = input("INSERISCI IL CODICE: ")
+print(brainfuck_to_text(brainfuck_code))
+

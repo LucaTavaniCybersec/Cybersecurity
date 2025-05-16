@@ -1,0 +1,21 @@
+import requests
+from requests.auth import HTTPBasicAuth
+
+def check_enabled_http_methods():
+    path = 'http://192.168.40.101/phpMyAdmin/index.php?token=8c7355766c56765fa1a2102d86e01d18'
+    username = 'msfadmin'  # Inserisci qui il nome utente se necessario
+    password = 'msfadmin'  # Inserisci qui la password se necessario
+    methods = ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'HEAD']
+    enabled_methods = []
+
+    for method in methods:
+        try:
+            response = requests.request(method, path, auth=HTTPBasicAuth(username, password))
+            if response.status_code < 400:
+                enabled_methods.append(method)
+        except Exception:
+            continue
+
+    print("Metodi abilitati:", ", ".join(enabled_methods))
+
+check_enabled_http_methods()
