@@ -1,0 +1,15 @@
+A causa delle politiche di Microsoft SmartScreen e in assenza di una firma digitale certificata, ho deciso di rimuovere tutti i file .exe precompilati da questo repository.
+
+I prossimi aggiornamenti includeranno tool sviluppati in Python, compatibili con Windows e Linux, accompagnati da istruzioni chiare e documentazione tecnica.
+
+L'obiettivo resta la cybersecurity etica, la ricerca sulle vulnerabilità e l'utilizzo a fini didattici.
+
+Ogni tool sarà corredato da un file README.md contenente:
+
+Librerie necessarie
+
+Istruzioni per l’utilizzo
+
+Scopo e ambito tecnico
+
+Grazie per la comprensione. Questo garantisce maggiore sicurezza, trasparenza e compatibilità.
